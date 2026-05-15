@@ -14,13 +14,36 @@ void Display(struct Array arr){
     }
 }
 
+void Append(struct Array *arr, int x){
+    if(arr->length<arr->size){
+        arr->A[arr->length++]=x;
+    }
+}
+
+void Insert(struct Array *arr, int index, int x){
+    int i;
+    if(index>=0 && index<= arr->length){
+        for(i=arr->length; i>index; i--){
+            arr->A[i] = arr->A[i-1]; // arr->A[i+1] = arr->A[i];
+        }
+        arr->A[index]=x;
+        arr->length++;
+    }
+}
+
 int main(){
 
     struct Array arr = {{2,3,4,5,6},20,5};
 
-    Display(arr);
-    
+    // int e;
+    // printf("Enter the element: ");
+    // scanf("%d",&e);
 
+    Insert(&arr,5,50);
+
+    // Append(&arr,e);
+
+    Display(arr);
 
     return 0;
 }
